@@ -7,7 +7,7 @@ export default function Footer() {
       color: "#607d8b",
       fontSize: "14px"
     }}>
-      © {new Date().getFullYear()} • CIBIC Laboratorios — Sistema interno de control de insumos.
+      © {new Date().getFullYear()} • BIC Laboratorios — Sistema interno de control de insumos.
     </div>
   );
 }

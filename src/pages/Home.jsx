@@ -32,7 +32,7 @@ export default function Home() {
           textShadow: "0 2px 4px rgba(0,0,0,0.15)",
         }}
       >
-        Control de Insumos – CIBIC
+        Control de Insumos – BIC
       </div>
 
       <div className="container">

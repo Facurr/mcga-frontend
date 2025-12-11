@@ -22,7 +22,7 @@ export default function Header({ isLogged }) {
         color: "var(--primary-dark)",
         letterSpacing: "0.5px"
       }}>
-        CIBIC • Insumos
+        BIC • Insumos
       </div>
 
       {/* Menu */}

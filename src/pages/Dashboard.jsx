@@ -4,7 +4,7 @@ import { useAuth } from "../hooks/useAuth";
 import Spinner from "../components/Spinner";
 
 export default function Dashboard() {
-  const { token, logout } = useAuth();
+  const { token, logout } = useAuth();  
 
   const [products, setProducts] = useState([]);
   const [form, setForm] = useState({
@@ -76,7 +76,7 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* Banner superior CIBIC */}
+      {/* Banner superior BIC */}
       <div
         style={{
           width: "100%",
@@ -92,7 +92,7 @@ export default function Dashboard() {
           textShadow: "0 2px 4px rgba(0,0,0,0.15)",
         }}
       >
-        Panel de Insumos – CIBIC
+        Panel de Insumos – BIC
       </div>
 
       <div className="container">
