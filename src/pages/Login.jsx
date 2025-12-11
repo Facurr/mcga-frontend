@@ -9,7 +9,7 @@ export default function Login() {
   const onSubmit = async (data) => {
     try {
       const res = await api.post("/auth/login", data);
-      login(res.data.token); // guardamos token
+      login(res.data.token);
       window.location.href = "/dashboard";
     } catch (error) {
       alert("Credenciales inválidas");
@@ -17,18 +17,29 @@ export default function Login() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="container">
       <h1>Login</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+      <form onSubmit={handleSubmit(onSubmit)} style={{ marginTop: "20px" }}>
+        
+        <div style={{ marginBottom: "15px" }}>
           <label>Email:</label>
-          <input type="email" {...register("email")} required />
+          <br />
+          <input
+            type="email"
+            {...register("email")}
+            required
+          />
         </div>
 
-        <div>
+        <div style={{ marginBottom: "15px" }}>
           <label>Contraseña:</label>
-          <input type="password" {...register("password")} required />
+          <br />
+          <input
+            type="password"
+            {...register("password")}
+            required
+          />
         </div>
 
         <button type="submit">Ingresar</button>
@@ -36,3 +47,4 @@ export default function Login() {
     </div>
   );
 }
+

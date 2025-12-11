@@ -4,9 +4,19 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+import { useAuth } from "./hooks/useAuth";
+
 function App() {
+  const { token } = useAuth();   // Para saber si está logueado
+
   return (
     <BrowserRouter>
+      {/* Header institucional */}
+      <Header isLogged={!!token} />
+
       <Routes>
         <Route path="/" element={<Home />} />
 
@@ -21,9 +31,13 @@ function App() {
           }
         />
       </Routes>
+
+      {/* Footer institucional */}
+      <Footer />
     </BrowserRouter>
   );
 }
 
 export default App;
+
 

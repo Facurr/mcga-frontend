@@ -1,0 +1,168 @@
+/* ------------------------
+   PALETA CIBIC
+------------------------- */
+:root {
+  --primary: #2ab7a9;
+  --primary-dark: #239c90;
+  --text: #37474f;
+  --bg-light: #f5f7f9;
+  --white: #fff;
+  --danger: #e74c3c;
+}
+
+/* ------------------------
+   GENERAL
+------------------------- */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 16px;
+
+  /* sombra más moderna */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+  /* animación de entrada */
+  animation: fadeInUp 0.6s ease both;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1, h2 {
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+}
+
+/* ------------------------
+   BOTONES
+------------------------- */
+button {
+  background: var(--primary);
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.25s;
+}
+
+button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+button.danger:hover {
+  background: #c0392b;
+}
+
+/* ------------------------
+   INPUTS
+------------------------- */
+input {
+  padding: 12px;
+  width: 280px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+
+  transition: 0.25s ease;
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 6px rgba(42, 183, 169, 0.4);
+}
+
+/* ------------------------
+   TARJETAS DE PRODUCTO
+------------------------- */
+.product-item {
+  background: var(--white);
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-left: 5px solid var(--primary);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+
+  animation: fadeInUp 0.5s ease both;
+}
+
+.product-text {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* ------------------------
+   LINKS
+------------------------- */
+a {
+  color: var(--primary-dark);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------------
+   LOADING SPINNER (Punto 3)
+------------------------- */
+.spinner {
+  border: 4px solid #e0f2f1;
+  border-top: 4px solid var(--primary-dark);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ------------------------
+   MENSAJES DE ERROR (Punto 4)
+------------------------- */
+.error-box {
+  background: #fdecea;
+  color: var(--danger);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 4px solid var(--danger);
+  font-size: 14px;
+  animation: fadeInUp 0.4s ease both;
+}
+
+
