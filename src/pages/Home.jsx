@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { api } from "../api/api";
 import Spinner from "../components/Spinner";
+import { getPublicProducts } from "../api/products";  // ✅ usar función de API centralizada
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -8,7 +8,7 @@ export default function Home() {
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    api.get("/products/public")
+    getPublicProducts()
       .then((res) => setProducts(res.data))
       .catch(() => setErrorMsg("Ocurrió un error al cargar los insumos."))
       .finally(() => setLoading(false));
@@ -45,7 +45,6 @@ export default function Home() {
         </p>
 
         {errorMsg && <div className="error-box">{errorMsg}</div>}
-
         {loading && <Spinner />}
 
         {!loading && !errorMsg && (
@@ -66,7 +65,7 @@ export default function Home() {
 
         <br />
 
-        {/* Botón login con icono */}
+        {/* Botón login */}
         <a
           href="/login"
           style={{
