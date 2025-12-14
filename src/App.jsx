@@ -14,26 +14,27 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="app-layout">
-        <Header isLogged={!!token} />
+      {/* Header full width */}
+      <Header isLogged={!!token} />
 
-        <main className="app-main">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/dashboard"
-              element={
-                <PrivateRoute>
-                  <Dashboard />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
-        </main>
+      {/* Contenido de páginas */}
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </main>
 
-        <Footer />
-      </div>
+      {/* Footer full width */}
+      <Footer />
     </BrowserRouter>
   );
 }
