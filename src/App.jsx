@@ -10,29 +10,29 @@ import Footer from "./components/Footer";
 import { useAuth } from "./hooks/useAuth";
 
 function App() {
-  const { token } = useAuth();   // Para saber si está logueado
+  const { token } = useAuth();
 
   return (
     <BrowserRouter>
-      {/* Header institucional */}
       <Header isLogged={!!token} />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
+      {/* Wrapper general de páginas */}
+      <main className="page-wrapper">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
 
-        <Route path="/login" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </main>
 
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-
-      {/* Footer institucional */}
       <Footer />
     </BrowserRouter>
   );

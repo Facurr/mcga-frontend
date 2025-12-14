@@ -21,12 +21,11 @@ body {
   color: var(--text);
 }
 
-/* Wrapper general */
+/* Wrapper general de páginas (CLAVE DEL FIX) */
 .page-wrapper {
-  min-height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  padding-top: 40px; /* separación real del header */
+  min-height: calc(100vh - 120px); /* header + footer */
+  background-color: var(--bg-light);
 }
 
 /* ------------------------
@@ -51,7 +50,7 @@ header h1 {
 ------------------------- */
 .container {
   max-width: 900px;
-  margin: 40px auto;
+  margin: 0 auto; /* importante: sin margen vertical */
   background: var(--white);
   padding: 30px;
   border-radius: 16px;
@@ -211,6 +210,7 @@ a:hover {
     transform: translateY(0);
   }
 }
+
 
 
 
