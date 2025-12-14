@@ -14,30 +14,28 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header isLogged={!!token} />
+      <div className="app-layout">
+        <Header isLogged={!!token} />
 
-      {/* Wrapper general de páginas */}
-      <main className="page-wrapper">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+        <main className="app-main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </main>
 
-          <Route
-            path="/dashboard"
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
-      </main>
-
-      <Footer />
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
 
 export default App;
-
-
