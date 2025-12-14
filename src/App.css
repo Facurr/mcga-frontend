@@ -8,26 +8,27 @@
   width: 100%;
   min-height: 100vh;
   margin: 0;
-  padding: 0;
-  max-width: none;
-  text-align: initial;
+  padding: 0; /* 🔴 clave: eliminar padding global */
+  text-align: left;
 }
 
-/* Anulamos estilos demo de Vite */
+/* Mantengo lo demás por compatibilidad Vite */
+
 .logo {
-  height: auto;
-  padding: 0;
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
 
-.card {
-  padding: 0;
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 
-.read-the-docs {
-  display: none;
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-/* Animación legacy (no molesta, la dejamos por compatibilidad) */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -41,6 +42,14 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
 }
 
 
