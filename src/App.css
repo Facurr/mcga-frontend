@@ -8,12 +8,12 @@
   width: 100%;
   min-height: 100vh;
   margin: 0;
-  padding: 0; /* 🔴 clave: eliminar padding global */
-  text-align: left;
+  padding: 0;
 }
 
-/* Mantengo lo demás por compatibilidad Vite */
-
+/* =========================
+   ESTILOS BASE (VITE)
+========================= */
 .logo {
   height: 6em;
   padding: 1.5em;

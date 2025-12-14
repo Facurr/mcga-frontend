@@ -4,7 +4,7 @@ import { useAuth } from "../hooks/useAuth";
 import Spinner from "../components/Spinner";
 
 export default function Dashboard() {
-  const { token, logout } = useAuth();  
+  const { token, logout } = useAuth();
 
   const [products, setProducts] = useState([]);
   const [form, setForm] = useState({
@@ -27,7 +27,7 @@ export default function Dashboard() {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts(res.data);
-    } catch (error) {
+    } catch {
       setErrorMsg("No se pudieron cargar los insumos.");
     } finally {
       setLoading(false);
@@ -76,7 +76,7 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* Banner superior BIC */}
+      {/* BANNER FULL WIDTH */}
       <div
         style={{
           width: "100%",
@@ -96,7 +96,7 @@ export default function Dashboard() {
       </div>
 
       <div className="container">
-        {/* Botón logout con icono */}
+        {/* Logout */}
         <button
           onClick={logout}
           className="danger"
@@ -113,7 +113,6 @@ export default function Dashboard() {
           Cerrar sesión
         </button>
 
-        {/* Mensajes */}
         {errorMsg && <div className="error-box">{errorMsg}</div>}
 
         {successMsg && (
@@ -125,15 +124,13 @@ export default function Dashboard() {
               borderLeft: "4px solid var(--primary-dark)",
               borderRadius: "8px",
               marginBottom: "15px",
-              animation: "fadeInUp 0.4s ease both",
             }}
           >
             {successMsg}
           </div>
         )}
 
-        {/* Registrar insumo */}
-        <h2 style={{ color: "var(--primary-dark)" }}>Registrar insumo</h2>
+        <h2>Registrar insumo</h2>
 
         <div style={{ marginBottom: "20px" }}>
           <input
@@ -158,15 +155,11 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Loading */}
         {loading && <Spinner />}
 
-        {/* Listado */}
         {!loading && (
           <>
-            <h2 style={{ color: "var(--primary-dark)" }}>
-              Insumos registrados
-            </h2>
+            <h2>Insumos registrados</h2>
 
             {products.length === 0 && <p>No hay insumos cargados.</p>}
 
@@ -174,8 +167,6 @@ export default function Dashboard() {
               <div key={p._id} className="product-item">
                 <span className="product-text">
                   <strong>{p.name}</strong> – ${p.price}
-
-                  {/* BADGE STOCK */}
                   <span
                     style={{
                       background: p.inStock
@@ -186,41 +177,18 @@ export default function Dashboard() {
                       borderRadius: "6px",
                       fontSize: "12px",
                       marginLeft: "10px",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "4px",
                     }}
                   >
-                    <span
-                      className="material-icons"
-                      style={{ fontSize: "14px" }}
-                    >
-                      {p.inStock ? "check_circle" : "error"}
-                    </span>
-
                     {p.inStock ? "En stock" : "Sin stock"}
                   </span>
-
                   <br />
                   {p.description}
                 </span>
 
-                {/* Botón eliminar */}
                 <button
                   className="danger"
                   onClick={() => handleDelete(p._id)}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
-                  }}
                 >
-                  <span
-                    className="material-icons"
-                    style={{ fontSize: "18px" }}
-                  >
-                    delete
-                  </span>
                   Eliminar
                 </button>
               </div>
@@ -231,3 +199,4 @@ export default function Dashboard() {
     </>
   );
 }
+
