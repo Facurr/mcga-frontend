@@ -77,10 +77,10 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* Banner */}
+      {/* 🔥 BANNER FULL WIDTH (FIX DEFINITIVO) */}
       <div
         style={{
-          width: "100%",
+          width: "100vw",
           height: "180px",
           background: "var(--primary)",
           display: "flex",
@@ -90,6 +90,7 @@ export default function Dashboard() {
           fontSize: "26px",
           fontWeight: "600",
           letterSpacing: "1px",
+          marginLeft: "calc(-50vw + 50%)",
         }}
       >
         Panel de Insumos – BIC
@@ -171,5 +172,3 @@ export default function Dashboard() {
     </>
   );
 }
-
-
