@@ -1,4 +1,3 @@
-// src/pages/Dashboard.jsx
 import { useEffect, useState } from "react";
 import { api } from "../api/api";
 import { useAuth } from "../hooks/useAuth";
@@ -78,28 +77,15 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* BANNER PRINCIPAL (AHORA ES EL HEADER REAL) */}
-      <div
-        style={{
-          width: "100%",
-          height: "180px",
-          background: "var(--primary)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white",
-          fontSize: "26px",
-          fontWeight: "600",
-          letterSpacing: "1px",
-        }}
-      >
+      {/* ===== BANNER FULL WIDTH REAL ===== */}
+      <div className="banner">
         Panel de Insumos – BIC
       </div>
 
-      {/* ACTION BAR */}
+      {/* ===== ACTION BAR CENTRADA ===== */}
       <ActionBar isLogged={true} onLogout={logout} />
 
-      {/* CONTENIDO */}
+      {/* ===== CONTENIDO ===== */}
       <div className="container">
         {errorMsg && <div className="error-box">{errorMsg}</div>}
 
@@ -153,7 +139,7 @@ export default function Dashboard() {
 
             {products.map((p) => (
               <div key={p._id} className="product-item">
-                <span className="product-text">
+                <span>
                   <strong>{p.name}</strong> – ${p.price}
                   <br />
                   {p.description}

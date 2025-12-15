@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
-import { getPublicProducts } from "../api/products";  // ✅ usar función de API centralizada
+import { getPublicProducts } from "../api/products";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -16,31 +16,16 @@ export default function Home() {
 
   return (
     <>
-      {/* Banner superior */}
-      <div
-        style={{
-          width: "100%",
-          height: "180px",
-          background: "var(--primary)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white",
-          fontSize: "26px",
-          fontWeight: "600",
-          letterSpacing: "1px",
-          textShadow: "0 2px 4px rgba(0,0,0,0.15)",
-        }}
-      >
+      {/* ===== BANNER FULL WIDTH ===== */}
+      <div className="banner">
         Control de Insumos – BIC
       </div>
 
-      <div className="container">
-        <h2 style={{ marginTop: "0px", color: "var(--primary-dark)" }}>
-          Sistema interno de gestión
-        </h2>
+      {/* ===== CONTENIDO ===== */}
+      <div className="container" style={{ marginTop: "40px" }}>
+        <h2 style={{ marginTop: 0 }}>Sistema interno de gestión</h2>
 
-        <p style={{ marginTop: "-5px", marginBottom: "25px", color: "#607d8b" }}>
+        <p style={{ color: "#607d8b", marginBottom: "25px" }}>
           Consulta los insumos disponibles registrados en el sistema.
         </p>
 
@@ -53,7 +38,7 @@ export default function Home() {
 
             {products.map((p) => (
               <div key={p._id} className="product-item">
-                <span className="product-text">
+                <span>
                   <strong>{p.name}</strong> – ${p.price}
                   <br />
                   {p.description}
@@ -63,23 +48,24 @@ export default function Home() {
           </>
         )}
 
-        <br />
-
-        {/* Botón login */}
-        <a
-          href="/login"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "6px",
-          }}
-        >
-          <span className="material-icons" style={{ fontSize: "20px" }}>
-            login
-          </span>
-          Ingresar
-        </a>
+        {/* CTA LOGIN */}
+        <div style={{ marginTop: "30px", textAlign: "center" }}>
+          <a
+            href="/login"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              fontWeight: 600,
+              color: "var(--primary-dark)",
+            }}
+          >
+            <span className="material-icons">login</span>
+            Ingresar
+          </a>
+        </div>
       </div>
     </>
   );
 }
+
