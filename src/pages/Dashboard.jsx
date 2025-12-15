@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api/api";
 import { useAuth } from "../hooks/useAuth";
 import Spinner from "../components/Spinner";
+import ActionBar from "../components/ActionBar";
 
 export default function Dashboard() {
   const { token, logout } = useAuth();
@@ -76,7 +77,7 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* BANNER FULL WIDTH */}
+      {/* Banner */}
       <div
         style={{
           width: "100%",
@@ -89,30 +90,15 @@ export default function Dashboard() {
           fontSize: "26px",
           fontWeight: "600",
           letterSpacing: "1px",
-          textShadow: "0 2px 4px rgba(0,0,0,0.15)",
         }}
       >
         Panel de Insumos – BIC
       </div>
 
-      <div className="container">
-        {/* Logout */}
-        <button
-          onClick={logout}
-          className="danger"
-          style={{
-            marginBottom: "20px",
-            display: "flex",
-            alignItems: "center",
-            gap: "6px",
-          }}
-        >
-          <span className="material-icons" style={{ fontSize: "18px" }}>
-            logout
-          </span>
-          Cerrar sesión
-        </button>
+      {/* Action bar centrada */}
+      <ActionBar isLogged={true} onLogout={logout} />
 
+      <div className="container">
         {errorMsg && <div className="error-box">{errorMsg}</div>}
 
         {successMsg && (
@@ -141,7 +127,9 @@ export default function Dashboard() {
           <input
             placeholder="Descripción"
             value={form.description}
-            onChange={(e) => setForm({ ...form, description: e.target.value })}
+            onChange={(e) =>
+              setForm({ ...form, description: e.target.value })
+            }
           />
           <input
             type="number"
@@ -161,26 +149,10 @@ export default function Dashboard() {
           <>
             <h2>Insumos registrados</h2>
 
-            {products.length === 0 && <p>No hay insumos cargados.</p>}
-
             {products.map((p) => (
               <div key={p._id} className="product-item">
                 <span className="product-text">
                   <strong>{p.name}</strong> – ${p.price}
-                  <span
-                    style={{
-                      background: p.inStock
-                        ? "var(--primary)"
-                        : "var(--danger)",
-                      color: "white",
-                      padding: "3px 8px",
-                      borderRadius: "6px",
-                      fontSize: "12px",
-                      marginLeft: "10px",
-                    }}
-                  >
-                    {p.inStock ? "En stock" : "Sin stock"}
-                  </span>
                   <br />
                   {p.description}
                 </span>
@@ -199,4 +171,5 @@ export default function Dashboard() {
     </>
   );
 }
+
 
