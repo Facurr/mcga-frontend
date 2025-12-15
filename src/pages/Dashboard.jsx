@@ -1,3 +1,4 @@
+// src/pages/Dashboard.jsx
 import { useEffect, useState } from "react";
 import { api } from "../api/api";
 import { useAuth } from "../hooks/useAuth";
@@ -77,10 +78,10 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* 🔥 BANNER FULL WIDTH (FIX DEFINITIVO) */}
+      {/* BANNER PRINCIPAL (AHORA ES EL HEADER REAL) */}
       <div
         style={{
-          width: "100vw",
+          width: "100%",
           height: "180px",
           background: "var(--primary)",
           display: "flex",
@@ -90,15 +91,15 @@ export default function Dashboard() {
           fontSize: "26px",
           fontWeight: "600",
           letterSpacing: "1px",
-          marginLeft: "calc(-50vw + 50%)",
         }}
       >
         Panel de Insumos – BIC
       </div>
 
-      {/* Action bar centrada */}
+      {/* ACTION BAR */}
       <ActionBar isLogged={true} onLogout={logout} />
 
+      {/* CONTENIDO */}
       <div className="container">
         {errorMsg && <div className="error-box">{errorMsg}</div>}
 
