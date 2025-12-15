@@ -30,4 +30,27 @@ body {
    ========================= */
 
 
+/* =========================
+   ✅ MEJORA DE CONTRASTE – BANNERS
+   (NO rompe layout)
+   ========================= */
+
+.banner {
+  background: var(--primary);
+}
+
+.banner .title {
+  color: #ffffff;          /* Blanco puro */
+  font-weight: 800;        /* Más presencia */
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.banner .subtitle {
+  color: rgba(255, 255, 255, 0.9); /* Blanco suave */
+  font-weight: 500;
+}
+
+
+
 
