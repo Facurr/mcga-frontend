@@ -1,8 +1,10 @@
+// src/pages/Dashboard.jsx
 import { useEffect, useState } from "react";
 import { api } from "../api/api";
 import { useAuth } from "../hooks/useAuth";
 import Spinner from "../components/Spinner";
 import ActionBar from "../components/ActionBar";
+import Banner from "../components/Banner";
 
 export default function Dashboard() {
   const { token, logout } = useAuth();
@@ -37,6 +39,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     loadProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCreate = async () => {
@@ -77,27 +80,28 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* ===== BANNER FULL WIDTH REAL ===== */}
-      <div className="banner">
-        Panel de Insumos – BIC
-      </div>
+      {/* Banner verde general */}
+      <Banner
+        title="BIC • INSUMOS"
+        subtitle="PANEL DE CONTROL"
+      />
 
-      {/* ===== ACTION BAR CENTRADA ===== */}
-      <ActionBar isLogged={true} onLogout={logout} />
+      {/* Action bar (full width hasta el borde) */}
+      <ActionBar isLogged onLogout={logout} />
 
-      {/* ===== CONTENIDO ===== */}
-      <div className="container">
+      {/* Contenido principal */}
+      <div className="container container--spaced">
         {errorMsg && <div className="error-box">{errorMsg}</div>}
 
         {successMsg && (
           <div
             style={{
               background: "#e8f8f5",
-              color: "#239c90",
-              padding: "12px",
+              color: "var(--primary-dark)",
+              padding: "12px 16px",
               borderLeft: "4px solid var(--primary-dark)",
               borderRadius: "8px",
-              marginBottom: "15px",
+              marginBottom: "18px",
             }}
           >
             {successMsg}
@@ -106,7 +110,7 @@ export default function Dashboard() {
 
         <h2>Registrar insumo</h2>
 
-        <div style={{ marginBottom: "20px" }}>
+        <div style={{ marginBottom: "24px" }}>
           <input
             placeholder="Nombre del insumo"
             value={form.name}
@@ -126,7 +130,7 @@ export default function Dashboard() {
             onChange={(e) => setForm({ ...form, price: e.target.value })}
           />
 
-          <button onClick={handleCreate} style={{ marginTop: "10px" }}>
+          <button onClick={handleCreate} style={{ marginTop: "12px" }}>
             Crear
           </button>
         </div>
@@ -137,9 +141,11 @@ export default function Dashboard() {
           <>
             <h2>Insumos registrados</h2>
 
+            {products.length === 0 && <p>No hay insumos cargados.</p>}
+
             {products.map((p) => (
               <div key={p._id} className="product-item">
-                <span>
+                <span className="product-text">
                   <strong>{p.name}</strong> – ${p.price}
                   <br />
                   {p.description}
@@ -159,3 +165,5 @@ export default function Dashboard() {
     </>
   );
 }
+
+

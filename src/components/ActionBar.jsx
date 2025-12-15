@@ -1,3 +1,4 @@
+// src/components/ActionBar.jsx
 import { Link } from "react-router-dom";
 
 export default function ActionBar({ isLogged, onLogout }) {
@@ -10,29 +11,31 @@ export default function ActionBar({ isLogged, onLogout }) {
         alignItems: "center",
         gap: "22px",
         padding: "18px 12px",
-        background: "white",
+        background: "var(--white)",
         borderBottom: "1px solid #eaeaea",
+        boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
       }}
     >
+      {/* Inicio siempre visible */}
       <Link
         to="/"
         style={{
           textDecoration: "none",
           color: "var(--text)",
-          fontWeight: 600,
+          fontWeight: 700,
         }}
       >
         Inicio
       </Link>
 
-      {isLogged ? (
+      {isLogged && (
         <>
           <Link
             to="/dashboard"
             style={{
               textDecoration: "none",
               color: "var(--text)",
-              fontWeight: 600,
+              fontWeight: 700,
             }}
           >
             Panel
@@ -47,6 +50,7 @@ export default function ActionBar({ isLogged, onLogout }) {
               display: "inline-flex",
               alignItems: "center",
               gap: "6px",
+              fontWeight: 600,
             }}
           >
             <span className="material-icons" style={{ fontSize: "18px" }}>
@@ -55,19 +59,9 @@ export default function ActionBar({ isLogged, onLogout }) {
             Salir
           </button>
         </>
-      ) : (
-        <Link
-          to="/login"
-          style={{
-            textDecoration: "none",
-            color: "var(--primary-dark)",
-            fontWeight: 700,
-          }}
-        >
-          Ingresar
-        </Link>
       )}
     </div>
   );
 }
+
 

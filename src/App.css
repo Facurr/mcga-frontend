@@ -1,9 +1,17 @@
 /* =========================
    App.css
-   Fix layout Vite
+   Layout limpio (Vite FIX)
    ========================= */
 
-/* Root sin límites ni centrado */
+/* Reset TOTAL del contenedor raíz */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 #root {
   width: 100%;
   min-height: 100vh;
@@ -11,45 +19,15 @@
   padding: 0;
 }
 
+/* Evita scroll horizontal por banners 100% */
+body {
+  overflow-x: hidden;
+}
+
 /* =========================
-   ESTILOS BASE (VITE)
-========================= */
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
+   ❌ ELIMINAMOS estilos demo de Vite
+   (logo, card, animaciones, etc.)
+   ========================= */
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
 
 

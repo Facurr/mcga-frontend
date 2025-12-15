@@ -3,13 +3,12 @@ export default function Footer() {
     <footer
       style={{
         textAlign: "center",
-        padding: "20px",
-        marginTop: "40px",
-        color: "#607d8b",
+        padding: "24px 12px",
         fontSize: "14px",
+        color: "#607d8b",
       }}
     >
-      © 2025 • BIC Laboratorios — Sistema interno de control de insumos
+      © 2025 • BIC Laboratorios — Sistema interno de control de insumos.
     </footer>
   );
 }
