@@ -42,7 +42,10 @@ export default function Dashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleCreate = async () => {
+  const handleCreate = async (e) => {
+    e.preventDefault();
+    setErrorMsg("");
+
     if (!form.name || !form.description || !form.price) {
       setErrorMsg("Todos los campos son obligatorios.");
       return;
@@ -81,15 +84,11 @@ export default function Dashboard() {
   return (
     <>
       {/* Banner verde general */}
-      <Banner
-        title="BIC • INSUMOS"
-        subtitle="PANEL DE CONTROL"
-      />
+      <Banner title="BIC • INSUMOS" subtitle="PANEL DE CONTROL" />
 
-      {/* Action bar (full width hasta el borde) */}
+      {/* Action bar */}
       <ActionBar isLogged onLogout={logout} />
 
-      {/* Contenido principal */}
       <div className="container container--spaced">
         {errorMsg && <div className="error-box">{errorMsg}</div>}
 
@@ -110,7 +109,8 @@ export default function Dashboard() {
 
         <h2>Registrar insumo</h2>
 
-        <div style={{ marginBottom: "24px" }}>
+        {/* Form controlado por JS (sin validación HTML) */}
+        <form noValidate onSubmit={handleCreate} style={{ marginBottom: "24px" }}>
           <input
             placeholder="Nombre del insumo"
             value={form.name}
@@ -130,10 +130,10 @@ export default function Dashboard() {
             onChange={(e) => setForm({ ...form, price: e.target.value })}
           />
 
-          <button onClick={handleCreate} style={{ marginTop: "12px" }}>
+          <button type="submit" style={{ marginTop: "12px" }}>
             Crear
           </button>
-        </div>
+        </form>
 
         {loading && <Spinner />}
 
@@ -165,5 +165,3 @@ export default function Dashboard() {
     </>
   );
 }
-
-
