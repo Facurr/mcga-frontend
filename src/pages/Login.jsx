@@ -17,6 +17,13 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg("");
+
+    // ✅ Validación JavaScript (reemplaza HTML)
+    if (!email.trim() || !password.trim()) {
+      setErrorMsg("Debe completar email y contraseña.");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -54,7 +61,8 @@ export default function Login() {
 
           {errorMsg && <div className="error-box">{errorMsg}</div>}
 
-          <form onSubmit={handleSubmit}>
+          {/* 🚫 Desactiva validación HTML */}
+          <form noValidate onSubmit={handleSubmit}>
             <div style={{ marginBottom: "14px" }}>
               <label>Email</label>
               <input
@@ -63,7 +71,6 @@ export default function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="usuario@bic.com"
                 autoComplete="username"
-                required
                 style={{ width: "100%" }}
               />
             </div>
@@ -76,7 +83,6 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 autoComplete="current-password"
-                required
                 style={{ width: "100%" }}
               />
             </div>
@@ -94,5 +100,3 @@ export default function Login() {
     </>
   );
 }
-
-
